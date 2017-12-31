@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -96,7 +97,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) mNavigationView.getLayoutParams();
+        params.width = metrics.widthPixels;
+        mNavigationView.setLayoutParams(params);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
