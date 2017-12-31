@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+            <item
+                android:id="@+id/top_picks"
+                android:icon="@drawable/ic_star_border_black_24dp"
+                android:title="@string/top_picks" />
+            <item
+                android:id="@+id/recent_posts"
+                android:icon="@drawable/ic_query_builder_black_24dp"
+                android:title="@string/recent_posts" />
+
+
+
+    <item android:title="@string/categories">
+        <menu>
+            <item
+                android:id="@+id/sk3tch_machin3"
+                android:icon="@drawable/ic_portrait_black_24dp"
+                android:title="@string/sk3tch_machin3"
+                />
+            <item
+                android:id="@+id/wick3d_poison"
+                android:icon="@drawable/ic_code_black_24dp"
+                android:title="@string/wick3d_poison" />
+            <item
+                android:id="@+id/g3cko_taco"
+                android:icon="@drawable/ic_lightbulb_outline_black_24dp"
+                android:title="@string/g3cko_taco" />
+            <item
+                android:id="@+id/shutt3r_sh3ph3rd"
+                android:icon="@drawable/ic_center_focus_weak_black_24dp"
+                android:title="@string/shutt3r_sh3ph3rd" />
+            <item
+                android:id="@+id/opul3nt_brood"
+                android:icon="@drawable/ic_queue_music_black_24dp"
+                android:title="@string/opul3nt_brood" />
+            <item
+                android:id="@+id/misc"
+                android:icon="@drawable/ic_folder_open_black_24dp"
+                android:title="@string/misc" />
+        </menu>
+    </item>
+
+
+
+</menu>
