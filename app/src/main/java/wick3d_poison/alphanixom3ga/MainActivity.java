@@ -69,12 +69,20 @@ public class MainActivity extends AppCompatActivity
 
         final FloatingActionMenu fabMenu = (FloatingActionMenu) findViewById(R.id.fabMenu);
 
+        FloatingActionButton fabGoToTop = (FloatingActionButton) findViewById(R.id.fabGoToTop);
+        fabGoToTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myWebView.scrollTo(0,0);
+                fabMenu.close(true);
+            }
+        });
+
         FloatingActionButton fabHome = (FloatingActionButton) findViewById(R.id.fabHome);
         fabHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 myWebView.loadUrl("https://alphanixomega.blogspot.com");
-                getSupportActionBar().setTitle("Hello world App");
                 fabMenu.close(true);
             }
         });
