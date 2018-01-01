@@ -2,7 +2,9 @@ package wick3d_poison.alphanixom3ga;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
@@ -16,13 +18,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -95,6 +101,38 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 sharePage();
+                fabMenu.close(true);
+            }
+        });
+
+        FloatingActionButton fabSearch = (FloatingActionButton) findViewById(R.id.fabSearch);
+        fabSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Search ANΩ");
+                View viewInflated = LayoutInflater.from(MainActivity.this).inflate(R.layout.search_input, (ViewGroup) findViewById(android.R.id.content), false);
+                final EditText input = (EditText) viewInflated.findViewById(R.id.input);
+                builder.setView(viewInflated);
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String searchInput = input.getText().toString();
+                        searchInput.replaceAll(" ", "+;");
+                        myWebView.loadUrl("https://alphanixomega.blogspot.in/search?q="+searchInput);
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+
                 fabMenu.close(true);
             }
         });
@@ -186,8 +224,6 @@ public class MainActivity extends AppCompatActivity
         public void onPageFinished(WebView view, String url) {
 
             view.loadUrl("javascript:document.getElementsByClassName('viennatop-wrapper')[0].style.display='none';" +
-                    "javascript:document.getElementsByClassName('status-msg-wrap')[0].style.display='none';" +
-                    "javascript:document.getElementsByClassName('breadcrumbs')[0].style.display='none';" +
                     "javascript:document.getElementsByClassName('authorboxwrap')[0].style.display='none';" +
                     "javascript:document.getElementsByClassName('sharetitle')[0].style.display='none';" +
                     "javascript:document.getElementsByClassName('sharethis')[0].style.display='none';" +
@@ -199,8 +235,6 @@ public class MainActivity extends AppCompatActivity
                     "javascript:document.getElementById('sidebar-wrapper').style.display = 'none';" +
                     "javascript:document.getElementById('footer-wrapper').style.display = 'none';" +
                     "javascript:document.getElementById('virelated-post').style.display = 'none';" +
-                    "javascript:document.getElementById('comments').style.display = 'none';" +
-                    "javascript:document.getElementById('SmoothToTop').style.display = 'none';" +
                     "void(0);");
 
             super.onPageFinished(view, url);
