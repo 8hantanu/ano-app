@@ -1,5 +1,6 @@
 package wick3d_poison.alphanixom3ga;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -74,7 +75,8 @@ public class MainActivity extends AppCompatActivity
         fabGoToTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myWebView.scrollTo(0,0);
+                ObjectAnimator anim = ObjectAnimator.ofInt(myWebView, "scrollY", myWebView.getScrollY(), 0);
+                anim.setDuration(500).start();
                 fabMenu.close(true);
             }
         });
