@@ -224,6 +224,8 @@ public class MainActivity extends AppCompatActivity
         public void onPageFinished(WebView view, String url) {
 
             view.loadUrl("javascript:document.getElementsByClassName('viennatop-wrapper')[0].style.display='none';" +
+                    "javascript:document.getElementsByClassName('status-msg-wrap')[0].style.display='none';" +
+                    "javascript:document.getElementsByClassName('breadcrumbs')[0].style.display='none';" +
                     "javascript:document.getElementsByClassName('authorboxwrap')[0].style.display='none';" +
                     "javascript:document.getElementsByClassName('sharetitle')[0].style.display='none';" +
                     "javascript:document.getElementsByClassName('sharethis')[0].style.display='none';" +
